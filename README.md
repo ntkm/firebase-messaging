@@ -20,11 +20,23 @@ Or install it yourself as:
     $ gem install firebase-messaging
 
 ## Usage
+### Settings
 ```ruby
+# your initializer
 Firebase::Messaging.configure do |config|
   config.server_key = '***SERVER KEY***'
   config.logger = Rails.logger
   config.logger_level = :debug
+end
+```
+
+### Send Notification
+```ruby
+Firebase::Messaging::Client.new.send do |req|
+  req.body.notification = {title: "title", body: "body"}
+  req.body.data         = {content: "abc"}
+  req.priority          = :high # default: "high"
+  req.to = ['/topics/A', '/topics/B'] # or "/topics/A" or "fcm-token"
 end
 ```
 
@@ -40,4 +52,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/ntkm/f
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
