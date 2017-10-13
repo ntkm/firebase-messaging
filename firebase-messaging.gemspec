@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Firebase Messaging Client'
   spec.description   = 'Remote Push Notification to iOS/Android via Firebase.'
-  spec.homepage      = 'https://github.com/ntkm'
+  spec.homepage      = 'https://github.com/ntkm/firebase-messaging'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
