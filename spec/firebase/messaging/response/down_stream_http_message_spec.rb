@@ -140,8 +140,12 @@ describe Firebase::Messaging::Response::DownStreamHttpMessage do
     end
 
     context 'Json parse error' do
-      let(:response) { '' }
+      let(:response) { "string" }
+      it { expect { subject }.to raise_error(Firebase::Messaging::UnexpectedResponseError) }
+    end
 
+    context 'Empty Body' do
+      let(:response) { '' }
       it { expect { subject }.to raise_error(Firebase::Messaging::UnexpectedResponseError) }
     end
   end

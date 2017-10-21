@@ -44,7 +44,8 @@ module Firebase
         end
 
         def bind(type, status: nil, body: nil, headers: nil)
-          if json?(body)
+          # TODO: use @parsed_body, but here is class method scope... 
+          if json?(body) && !JSON.parse(body, symbolize_names: true).blank?
             "Firebase::Messaging::Response::#{type.to_s.classify}".constantize.new(status: status, body: body, headers: headers)
           else
             Firebase::Messaging.logger.error("Unexpected response. status: #{status}, body: #{body}")
