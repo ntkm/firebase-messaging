@@ -5,7 +5,7 @@ module Firebase
     class Response
       class DownStreamHttpMessage < Firebase::Messaging::Response
         def success?
-          super && parsed_body[:success] > 0
+          super && !parsed_body.blank? && parsed_body[:success] > 0
         end
 
         def errors
